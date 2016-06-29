@@ -1,0 +1,15 @@
+#!/bin/python
+import sys
+
+def main(args):
+    """
+    :param host_name: Guest name
+    :param action: Reason for invoking, prepare, start, started
+    :param stdin: domain xml
+    """
+    pass
+
+if __name__ == "__main__":
+    main(sys.stdin, sys.argv)
+
+
