@@ -6,12 +6,11 @@
   <memoryBacking>
     <hugepages/>
   </memoryBacking>
-  <vcpu placement='static'>4</vcpu>
+  <vcpu placement='static'>3</vcpu>
   <cputune>
     <vcpupin vcpu='0' cpuset='0'/>
     <vcpupin vcpu='1' cpuset='1'/>
     <vcpupin vcpu='2' cpuset='2'/>
-    <vcpupin vcpu='3' cpuset='3'/>
   </cputune>
   <os>
     <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
@@ -34,7 +33,7 @@
     <vmport state='off'/>
   </features>
   <cpu mode='host-passthrough'>
-    <topology sockets='1' cores='4' threads='1'/>
+    <topology sockets='1' cores='3' threads='1'/>
   </cpu>
   <clock offset='localtime'>
     <timer name='rtc' tickpolicy='catchup'/>
@@ -134,8 +133,7 @@
   </devices>
   <qemu:commandline>
     <qemu:env name='QEMU_AUDIO_DRV' value='pa'/>
-    <qemu:env name='QEMU_PA_SERVER' value='localhost'/>
-    <qemu:env name='QEMU_PA_SAMPLES' value='128'/>
+    <qemu:env name='QEMU_PA_SERVER' value='/run/user/1000/pulse/native'/>
   </qemu:commandline>
 </domain>
 
