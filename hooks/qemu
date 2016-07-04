@@ -1,15 +1,51 @@
 #!/bin/python
 import sys
+import subprocess
 
-def main(args):
+
+class QemuVM(object):
     """
-    :param host_name: Guest name
-    :param action: Reason for invoking, prepare, start, started
-    :param stdin: domain xml
     """
-    pass
+    @staticmethod
+    def run_hook(vmname, action):
+        """
+        Looks for a class matching the domain and runs the defined hooks for it
+        """
+        vm = None
+        try:
+            vm = globals()[vmname]
+        except KeyError:
+            print("No such VM")
+        
+        if vm:
+            try:
+                hook = getattr(vm, action)
+                hook()
+            except AttributeError:
+                print("Action not supported")
+
+    @staticmethod 
+    def prepare():
+        pass
+    @staticmethod
+    def release():
+        pass
+
+class win10(QemuVM):
+    host_user = "armin"
+    def prepare():
+        print("Preparing Host")
+        subprocess.check_call(['cpupower','frequency-set','-g', 'performance'])
+        #subprocess.check_call(['xrandr', '--output','DP2','--off'])
+        subprocess.check_call(['sudo', '-u','armin','synergyc',  "--no-tray", "--debug", "INFO", "--name", "kiwi", "192.168.1.165:24800"])
+    def release():
+        subprocess.check_call(['cpupower','frequency-set','-g', 'powersave'])
+        #subprocess.check_call(['xrandr', '--output', 'DP2', '--auto', '--left-of', 'HDMI3'])
+        subprocess.check_call(['killall', 'synergyc'])
+
 
 if __name__ == "__main__":
-    main(sys.stdin, sys.argv)
+
+    QemuVM.run_hook(sys.argv[1], sys.argv[2])
 
 
