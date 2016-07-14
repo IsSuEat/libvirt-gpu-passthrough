@@ -6,11 +6,14 @@
   <memoryBacking>
     <hugepages/>
   </memoryBacking>
-  <vcpu placement='static'>3</vcpu>
+  <vcpu placement='static'>6</vcpu>
   <cputune>
     <vcpupin vcpu='0' cpuset='0'/>
     <vcpupin vcpu='1' cpuset='1'/>
     <vcpupin vcpu='2' cpuset='2'/>
+    <vcpupin vcpu='3' cpuset='4'/>
+    <vcpupin vcpu='4' cpuset='5'/>
+    <vcpupin vcpu='5' cpuset='6'/>
   </cputune>
   <os>
     <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
@@ -33,7 +36,7 @@
     <vmport state='off'/>
   </features>
   <cpu mode='host-passthrough'>
-    <topology sockets='1' cores='3' threads='1'/>
+    <topology sockets='1' cores='3' threads='2'/>
   </cpu>
   <clock offset='localtime'>
     <timer name='rtc' tickpolicy='catchup'/>
