@@ -4,7 +4,7 @@ Scripts and configs for my vfio setup
 Current host-hardware configuration
 * core i7 6500
 * intel igp for the host
-* 16 gb ddr4 (potentially upgrading to 32gb in the future)
+* 32gb ddr4
 * ssd with lvm for storage
 * nvidia gtx970 for passthrough
 * archlinux
@@ -13,7 +13,7 @@ Current host-hardware configuration
 
 Setup at the moment
 * two monitors used for host when vm is not running, both connected to IGP
-* one monitor of the two monitors is also connected to the gtx970
+* one of the two monitors is also connected to the gtx970
 * when the guest starts, the left monitor on the host is disabled, switching to the gtx970
 * the host desktop is moved to the right screen
 * cpugovernor is set to performance
