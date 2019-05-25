@@ -31,6 +31,7 @@
       <hidden state='on'/>
     </kvm>
     <vmport state='off'/>
+    <ioapic driver='kvm'/>
   </features>
   <cpu mode='host-model' check='none'>
     <model fallback='allow'/>
